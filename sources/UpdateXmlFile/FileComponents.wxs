@@ -27,28 +27,31 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <ComponentGroup Id="FileComponents" Directory="INSTALLFOLDER">
 
             <Component Id="Component_SomeXmlFile" Guid="0C2FAC03-FA33-45C2-B1CC-83BBA655D051">
-                <File Id="SomeXmlFile" Source="$(var.ProjectDir)some-file.xml" KeyPath="yes" />
+                <File
+                    Id="SomeXmlFile"
+                    Source="$(var.ProjectDir)some-file.xml"
+                    KeyPath="yes" />
 
                 <util:XmlFile
                     Id="XmlFile_SetProjectName"
-                    File="[INSTALLFOLDER]some-file.xml"
+                    File="[#SomeXmlFile]"
                     Action="setValue"
                     ElementPath="/Project/@Name"
-                    Value="[PROJECT_NAME]"/>
+                    Value="[PROJECT_NAME]" />
 
                 <util:XmlFile
                     Id="XmlFile_SetClientName"
                     File="[INSTALLFOLDER]some-file.xml"
                     Action="setValue"
                     ElementPath="/Project/ClientName"
-                    Value="[CLIENT_NAME]"/>
+                    Value="[CLIENT_NAME]" />
 
                 <util:XmlFile
                     Id="XmlFile_SetClientAlternateLocation1"
                     File="[INSTALLFOLDER]some-file.xml"
                     Action="setValue"
                     ElementPath="/Project/ClientLocations/Location[\[]@Name='AlternateLocation1'[\]]/@Value"
-                    Value="[CLIENT_ALTERNATE_LOCATION_1]"/>
+                    Value="[CLIENT_ALTERNATE_LOCATION_1]" />
             </Component>
 
         </ComponentGroup>
