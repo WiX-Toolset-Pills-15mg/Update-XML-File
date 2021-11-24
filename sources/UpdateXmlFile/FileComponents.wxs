@@ -32,6 +32,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                     Source="$(var.ProjectDir)some-file.xml"
                     KeyPath="yes" />
 
+                <!-- Update an attribute: the Project's name. -->
                 <util:XmlFile
                     Id="XmlFile_SetProjectName"
                     File="[#SomeXmlFile]"
@@ -39,6 +40,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                     ElementPath="/Project/@Name"
                     Value="[PROJECT_NAME]" />
 
+                <!-- Update an element's content: the Client's name. -->
                 <util:XmlFile
                     Id="XmlFile_SetClientName"
                     File="[INSTALLFOLDER]some-file.xml"
@@ -46,6 +48,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                     ElementPath="/Project/ClientName"
                     Value="[CLIENT_NAME]" />
 
+                <!-- Update the "Value" attribute of an element that has a specific "Name" attribute: the Client's alternate location 1. -->
                 <util:XmlFile
                     Id="XmlFile_SetClientAlternateLocation1"
                     File="[INSTALLFOLDER]some-file.xml"
