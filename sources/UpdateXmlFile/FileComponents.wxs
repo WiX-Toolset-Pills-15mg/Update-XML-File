@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+WiX Toolset Pills 15mg
+Copyright (C) 2019-2021 Dust in the Wind
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<Wix
+    xmlns="http://schemas.microsoft.com/wix/2006/wi"
+    xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+
+    <Fragment>
+
+        <ComponentGroup Id="FileComponents" Directory="INSTALLFOLDER">
+
+            <Component Id="Component_SomeXmlFile" Guid="0C2FAC03-FA33-45C2-B1CC-83BBA655D051">
+                <File Id="SomeXmlFile" Source="$(var.ProjectDir)some-file.xml" KeyPath="yes" />
+
+                <util:XmlFile
+                    Id="XmlFile_SetProjectName"
+                    File="[INSTALLFOLDER]some-file.xml"
+                    Action="setValue"
+                    ElementPath="/Project/@Name"
+                    Value="[PROJECT_NAME]"/>
+
+                <util:XmlFile
+                    Id="XmlFile_SetClientName"
+                    File="[INSTALLFOLDER]some-file.xml"
+                    Action="setValue"
+                    ElementPath="/Project/ClientName"
+                    Value="[CLIENT_NAME]"/>
+
+                <util:XmlFile
+                    Id="XmlFile_SetClientAlternateLocation1"
+                    File="[INSTALLFOLDER]some-file.xml"
+                    Action="setValue"
+                    ElementPath="/Project/ClientLocations/Location[\[]@Name='AlternateLocation1'[\]]/@Value"
+                    Value="[CLIENT_ALTERNATE_LOCATION_1]"/>
+            </Component>
+
+        </ComponentGroup>
+
+    </Fragment>
+</Wix>

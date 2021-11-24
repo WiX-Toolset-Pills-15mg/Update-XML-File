@@ -1,0 +1,1 @@
+msiexec /i UpdateXmlFile.msi /l*vx install.log

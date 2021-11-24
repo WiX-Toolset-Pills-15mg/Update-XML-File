@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Name="Value not provided">
+    <ClientName>Value not provided</ClientName>
+    <ClientLocations>
+        <Location Name="MainLocation" Value="Value not provided"/>
+        <Location Name="AlternateLocation1" Value="Value not provided"/>
+        <Location Name="AlternateLocation2" Value="Value not provided"/>
+    </ClientLocations>
+</Project>

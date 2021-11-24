@@ -1,0 +1,1 @@
+msiexec /x UpdateXmlFile.msi /l*vx uninstall.log
