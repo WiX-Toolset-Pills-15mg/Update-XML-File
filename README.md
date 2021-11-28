@@ -8,7 +8,7 @@ One way to update the xml file is by creating a custom action and update it from
 
 This tutorial demonstrates how to update the xml file using an WiX Toolset extension from `WixUtilExtension.dll` library.
 
-A step-by-step tutorial can be found in the `doc/article` document, [here](doc/article/README.md).
+A step-by-step tutorial can be found in the `doc/article/README.md` document, [here](doc/article/README.md).
 
 ## Question
 
