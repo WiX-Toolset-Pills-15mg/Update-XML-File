@@ -34,7 +34,7 @@ This tutorial demonstrates how to update the xml file using an WiX Toolset exten
 
 ## Discussions and Suggestions
 
-[GitHub Discussions](https://github.com/WiX-Toolset-Pills-15mg/Immediate-Custom-Action/discussions)
+[GitHub Discussions](https://github.com/WiX-Toolset-Pills-15mg/Update-XML-File/discussions)
 
 Fill free to use the discussions page whenever needed:
 
