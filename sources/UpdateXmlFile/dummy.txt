@@ -1,0 +1,8 @@
+﻿WiX Toolset Pills 15mg - Update XML File
+====================================================================================================
+
+This file is part of the "Update XML File" pill.
+The pill demonstrates how to update an xml file after it is deployed, using the <util:XmlFile> tag.
+
+For more details please chech the GitHub repository:
+https://github.com/WiX-Toolset-Pills-15mg/Update-XML-File

@@ -2,7 +2,7 @@
 
 <!--
 WiX Toolset Pills 15mg
-Copyright (C) 2019-2021 Dust in the Wind
+Copyright (C) 2019-2022 Dust in the Wind
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,6 +18,32 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
+<!--
+====================================================================================================
+Step 3: Reference WiX Util Extensions
+====================================================================================================
+
+Add a reference to the "WixUtilExtension.dll" library.
+    - Right click the project -> Add -> Reference... and browse to select the dll file (it can be
+      found in the WiX Toolset installation directory)
+
+Usually it is in the following location:
+    - C:\Program Files (x86)\WiX Toolset v3.11\bin\\WixUtilExtension.dll
+
+NEXT: FileComponents.wxs (DOWN)
+-->
+
+<!--
+====================================================================================================
+Step 4: Add the XML namespace
+====================================================================================================
+
+Add the "xmlns:util" namespace into the root <Wix> tag. This is necessary in order to use the
+<util:XmlFile> tag.
+
+NEXT: FileComponents.wxs (DOWN)
+-->
+
 <Wix
     xmlns="http://schemas.microsoft.com/wix/2006/wi"
     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
@@ -26,15 +52,44 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
         <ComponentGroup Id="FileComponents" Directory="INSTALLFOLDER">
 
-            <Component Id="Component_SomeXmlFile" Guid="0C2FAC03-FA33-45C2-B1CC-83BBA655D051">
+            <Component Id="DummyFileComponent">
+                <File 
+                    Id="DummyFile"
+                    Source="$(var.ProjectDir)dummy.txt" 
+                    KeyPath="yes" />
+            </Component>
+
+            <!--
+            ====================================================================================================
+            Step 2: Create a component for the xml file
+            ====================================================================================================
+
+            This file must be added into a component. We can put this component next to the dummy file's
+            component, in the same group.
+
+            NEXT: FileComponents.wxs (UP)
+            -->
+
+            <Component Id="SomeXmlFileComponent" Guid="0C2FAC03-FA33-45C2-B1CC-83BBA655D051">
                 <File
                     Id="SomeXmlFile"
                     Source="$(var.ProjectDir)some-file.xml"
                     KeyPath="yes" />
 
+                <!--
+                ====================================================================================================
+                Step 5: Add the "XmlFile" Element
+                ====================================================================================================
+
+                The `XmlFile` element can be added as part of the same component as the xml file that is deployed
+                or as a separate component.
+
+                NEXT: FileComponents.wxs (UP)
+                -->
+
                 <!-- Update an attribute: the Project's name. -->
                 <util:XmlFile
-                    Id="XmlFile_SetProjectName"
+                    Id="SomeXmlFile_SetProjectName"
                     File="[#SomeXmlFile]"
                     Action="setValue"
                     ElementPath="/Project/@Name"
@@ -42,7 +97,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
                 <!-- Update an element's content: the Client's name. -->
                 <util:XmlFile
-                    Id="XmlFile_SetClientName"
+                    Id="SomeXmlFile_SetClientName"
                     File="[INSTALLFOLDER]some-file.xml"
                     Action="setValue"
                     ElementPath="/Project/ClientName"
@@ -50,7 +105,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
                 <!-- Update the "Value" attribute of an element that has a specific "Name" attribute: the Client's alternate location 1. -->
                 <util:XmlFile
-                    Id="XmlFile_SetClientAlternateLocation1"
+                    Id="SomeXmlFile_SetClientAlternateLocation1"
                     File="[INSTALLFOLDER]some-file.xml"
                     Action="setValue"
                     ElementPath="/Project/ClientLocations/Location[\[]@Name='AlternateLocation1'[\]]/@Value"

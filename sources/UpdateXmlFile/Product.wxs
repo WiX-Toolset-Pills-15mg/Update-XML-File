@@ -2,7 +2,7 @@
 
 <!--
 WiX Toolset Pills 15mg
-Copyright (C) 2019-2021 Dust in the Wind
+Copyright (C) 2019-2022 Dust in the Wind
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -16,6 +16,31 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!--
+====================================================================================================
+START: Overview
+====================================================================================================
+
+This project demonstrates how to update an xml file after it is deployed. One way to do it is by
+crating a custom action and update the xml file from C#.
+
+Another way, shown by this tutorial is to use the 
+
+NEXT: Product.wxs (DOWN)
+-->
+
+<!--
+====================================================================================================
+Step 1: Create and deploy an XML File
+====================================================================================================
+
+Create a new xml file:
+    - Solution Explorer -> right click on the project -> Add -> New Item... -> Text File ->
+      Name: some-file.xml -> click Add
+
+NEXT: FileComponents.wxs
 -->
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">

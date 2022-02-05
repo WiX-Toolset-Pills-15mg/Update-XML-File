@@ -24,6 +24,7 @@
     <Compile Include="Product.wxs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dummy.txt" />
     <Content Include="install.bat" />
     <Content Include="some-file.xml" />
     <Content Include="uninstall.bat" />
